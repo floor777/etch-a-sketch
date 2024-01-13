@@ -3,11 +3,27 @@
     flex-wrap: wrap;
     width: 500px;
     height: 500px;
+    margin: auto auto;
+    border: 5px black solid;
 }
 
-#grid-square {
-    opacity: 1.0;
-    flex: 1 1 21%;
-    margin: 5px;
-    background-color: blue;
- }
+.grid-square {
+    background-color: whitesmoke;
+    outline: 1px solid black;
+}
+
+
+
+#button-and-grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+#gridCreatorButton {
+    align-self: center;
+    width: 100px;
+    height: 50px;
+    margin: 50px;
+}
