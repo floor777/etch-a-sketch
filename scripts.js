@@ -3,22 +3,16 @@ function initiateGrid(n) {
     
     for (i = 0; i < n * n; i++){
         let gridRow = document.createElement('gridSquare');
-        gridRow.id = "grid-row-" + i;
-        gridRow.class ="grid-row"
 
         let gridSquare = document.createElement('gridSquare');
         gridSquare.className = "grid-square";
         gridSquare.style.opacity = 1;
 
-        gridSquare.addEventListener("mouseenter", (event) => {
-            if(gridSquare.style.opacity > 0) {
-                redAmount = getRandomInt(256);
-                greenAmount = getRandomInt(256);
-                blueAmount = getRandomInt(256);
-                gridSquare.style.setProperty('opacity', gridSquare.style.opacity -= 0.1);
-                gridSquare.style.setProperty('background-color', 'rgb(' + redAmount + ',' + greenAmount + ',' + blueAmount + ')');
-            }
+        gridSquare.addEventListener("mouseover", (event) => {
+                reduceOpacityOnHover(gridSquare)
         });
+
+
         gridSquare.style.flexBasis = 100 / n + "%";
 
         gridWrapper.appendChild(gridSquare);
@@ -28,6 +22,17 @@ function initiateGrid(n) {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
+}
+
+function reduceOpacityOnHover(gridSquare) {
+    if(gridSquare.style.opacity > 0) {
+        redAmount = getRandomInt(256);
+        greenAmount = getRandomInt(256);
+        blueAmount = getRandomInt(256);
+        gridSquare.style.setProperty('opacity', gridSquare.style.opacity -= 0.1);
+        gridSquare.style.setProperty('background-color', 'rgb(' + redAmount + ',' + greenAmount + ',' + blueAmount + ')');
+    }
+
 }
 
 function createNewGrid() {
@@ -47,3 +52,5 @@ function createNewGrid() {
       }
     initiateGrid(newSize);
 }
+
+initiateGrid(3);
